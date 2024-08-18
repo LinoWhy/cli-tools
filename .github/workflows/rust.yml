@@ -7,12 +7,23 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build:
+  build_release:
 
     runs-on: ubuntu-20.04
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
     - name: Install cargo-binstall
       uses: cargo-bins/cargo-binstall@main
-    - name: Build
+    - name: Build rust binary
       run: cargo binstall --no-confirm bat bottom du-dust fd-find git-delta hexyl lsd procs ripgrep starship tealdeer tree-sitter-cli vivid yazi-fm zoxide
+    - name: Pack binary
+      run: tar -czvf ~/rust_cli_tools.tar.gz -C ~/.cargo/bin .
+    - name: 'Create GitHub Release'
+      uses: softprops/action-gh-release@v1
+      with:
+        files: ~/rust_cli_tools.tar.gz
+        tag_name: v${{ github.run_number }}
+        name: Release V${{ github.run_number }}
