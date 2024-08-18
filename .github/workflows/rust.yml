@@ -18,12 +18,11 @@ jobs:
     - name: Install cargo-binstall
       uses: cargo-bins/cargo-binstall@main
     - name: Build rust binary
-      run: cargo binstall --no-confirm bat bottom du-dust fd-find git-delta hexyl lsd procs ripgrep starship tealdeer tree-sitter-cli vivid yazi-fm zoxide
+      run: cargo binstall --no-confirm bat
     - name: Pack binary
       run: tar -czvf ~/rust_cli_tools.tar.gz -C ~/.cargo/bin .
-    - name: 'Create GitHub Release'
-      uses: softprops/action-gh-release@v1
+    - uses: actions/upload-artifact@v4
       with:
-        files: ~/rust_cli_tools.tar.gz
-        tag_name: v${{ github.run_number }}
-        name: Release V${{ github.run_number }}
+        name: rust_cli_tools
+        path: ~/rust_cli_tools.tar.gz
+        retention-days: 1
