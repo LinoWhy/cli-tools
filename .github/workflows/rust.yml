@@ -37,7 +37,8 @@ jobs:
     - uses: actions/checkout@v4
     - uses: actions/download-artifact@v4
     - name: Release
-      uses: softprops/action-gh-release@v2
-      with:
-        name: rust_cli_tools
-        files: rust_cli_tools/rust_cli_tools.tar.gz
+      run: gh release create v1.2.3 ./rust_cli_tools/*
+      # uses: softprops/action-gh-release@v2
+      # with:
+      #   name: rust_cli_tools
+      #   files: rust_cli_tools/rust_cli_tools.tar.gz
