@@ -7,14 +7,14 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build:
+  build_rust:
     runs-on: ubuntu-20.04
     steps:
     - name: Install cargo-binstall
-      uses: cargo-bins/cargo-binstall@main
+      uses: cargo-bins/cargo-binstall@v1.10.2
     - name: Build rust binary
       run: |
-          cargo binstall --no-confirm bat
+          cargo binstall --no-confirm bat \
           bat bottom du-dust fd-find git-delta hexyl lsd procs ripgrep \
           starship tealdeer tree-sitter-cli vivid yazi-fm zoxide
     - name: Pack binary
@@ -26,7 +26,7 @@ jobs:
         retention-days: 1
 
   publish:
-    needs: [build]
+    needs: [build_rust]
     runs-on: ubuntu-latest
     env:
       GH_REPO: ${{ github.repository }}
