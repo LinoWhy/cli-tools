@@ -1,0 +1,15 @@
+bat
+bottom
+du-dust
+fd-find
+git-delta
+hexyl
+lsd
+procs
+ripgrep
+starship
+tealdeer
+tree-sitter-cli
+vivid
+yazi-fm
+zoxide
