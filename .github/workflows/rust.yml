@@ -13,6 +13,7 @@ jobs:
 
     steps:
     - name: Install cargo-binstall
-      uses: cargo-bins/cargo-binstall@v1.10.2
+      uses: cargo-bins/cargo-binstall@main
     - name: Build
-      run: cargo binstall --no-confirm bat
+      run: cargo binstall --no-confirm bat bottom du-dust fd-find git-delta hexyl lsd \
+                 procs ripgrep starship tealdeer tree-sitter-cli vivid yazi-fm zoxide
