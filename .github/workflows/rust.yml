@@ -15,4 +15,4 @@ jobs:
     - name: Install cargo-binstall
       uses: cargo-bins/cargo-binstall@v1.10.2      
     - name: Build
-      run: cargo intalll --no-confirm bat
+      run: cargo installl --no-confirm bat
