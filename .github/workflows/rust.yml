@@ -1,7 +1,7 @@
 name: Rust
 
 on:
-  workflow_dispatch:
+  push:
 
 env:
   CARGO_TERM_COLOR: always
@@ -39,4 +39,5 @@ jobs:
     - name: Release
       uses: softprops/action-gh-release@v2
       with:
+        name: rust_cli_tools
         files: rust_cli_tools/rust_cli_tools.tar.gz
